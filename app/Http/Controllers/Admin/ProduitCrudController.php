@@ -27,22 +27,58 @@ class ProduitCrudController extends CrudController
     }
 
     protected function setupListOperation(){ 
-
-
-        $this->crud->addColumn([
-
+        $V1 = [
+            'name' => 'nom',
+            'type' => 'text',
+            'label' => 'Nom',
+        ];
+        $V2 = [
+            'name' => 'categorries',
+            'type' => 'image',
+            'label' => 'Image',
+            'upload' => true,
+            'height' =>'80px',
+            'width' =>'80px',
+        ];
+        $V3= [
             'name' => 'category.nomCat',
             'type' => 'text',
-            'label' => 'Category'
-        ]);
+            'label' => 'Categorie',
+        ];
+        $V4= [
+            'name' => 'prix',
+            'type' => 'text',
+            'label' => 'Prix',
+        ];
 
-        $this->crud->setFromDb();
+        $V5= [
+            'name' => 'remise',
+            'type' => 'text',
+            'label' => 'Remise(%)',
+        ];
+
+        $V6= [
+            'name' => 'datDebut',
+            'type' => 'date',
+            'label' => 'Date debut',
+        ];
+
+        $V7= [
+            'name' => 'datFin',
+            'type' => 'date',
+            'label' => 'Date Fin',
+        ];
+
+
+
+ 
+        $this->crud->addColumns([$V1,$V2,$V3,$V4,$V5,$V6,$V7]);
+
     }
 
     protected function setupCreateOperation()
     {
         $this->crud->setValidation(ProduitRequest::class);
-
 
         // category_product 
         $this->crud->addField([
@@ -53,8 +89,15 @@ class ProduitCrudController extends CrudController
                 'attribute'=>'nomCat',
                 'model'=>\App\Models\Catproduit::class,]);
 
+        // images_Product  
+        $this->crud->addField([
+                    'name' => 'categorries',
+                    'label' => 'Image',
+                    'type' => 'browse',]);
 
-          
+
+
+
         $this->crud->setFromDb();
     }
 
