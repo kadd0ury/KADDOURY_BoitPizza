@@ -72,7 +72,7 @@ class ProduitCrudController extends CrudController
 
 
  
-        $this->crud->addColumns([$V1,$V2,$V3,$V4,$V5,$V6,$V7]);
+        $this->crud->addColumns([$V2,$V1,$V3,$V4,$V5,$V6,$V7]);
 
     }
 
