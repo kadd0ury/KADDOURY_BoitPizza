@@ -121,8 +121,57 @@ class ClientCrudController extends CrudController
          $this->crud->addFields([$V1,$V2,$V3,$V4,$V5,$V6,$V7]);
     }
 
-    protected function setupUpdateOperation()
-    {
-        $this->setupCreateOperation();
+    protected function setupUpdateOperation(){
+     $this->setupCreateOperation();
     }
+
+    protected function setupShowOperation() {
+        $this->crud->set('show.setFromDb', false);
+
+        $V1 = [
+            'name' => 'image',
+            'type' => 'image',
+            'label' => 'Profile Image',
+            'upload' => true,
+            'height' =>'80px',
+            'width' =>'80px',
+        ];
+        $V2=[
+            'name'=>'nom',
+            'label'=>'Nom',
+            'type'=>'text',
+          ];
+    
+          $V3=[
+            'name'=>'prenom',
+            'label'=>'Prénom',
+            'type'=>'text',
+          ];
+          $V4=[
+            'name'=>'login',
+            'label'=>"Nom d'utillisateur",
+            'type'=>'text',
+          ];
+
+          $V5=[
+            'name'=>'email',
+            'label'=>"Email",
+            'type'=>'email',
+          ];
+    
+          
+          $V6=[
+            'name'=>'adresse',
+            'label'=>"Adresse",
+            'type'=>'textarea',
+          ];
+
+          
+          $this->crud->addColumns([$V1,$V2,$V3,$V4,$V5,$V6]);
+
+
+
+
+    }
+
 }

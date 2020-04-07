@@ -67,11 +67,7 @@ class ProduitCrudController extends CrudController
             'name' => 'datFin',
             'type' => 'date',
             'label' => 'Date Fin',
-        ];
-
-
-
- 
+        ]; 
         $this->crud->addColumns([$V2,$V1,$V3,$V4,$V5,$V6,$V7]);
 
     }
@@ -105,4 +101,55 @@ class ProduitCrudController extends CrudController
     {
         $this->setupCreateOperation();
     }
+
+    protected function setupShowOperation() {
+        $this->crud->set('show.setFromDb', false);
+
+        $V1 = [
+            'name' => 'categorries',
+            'type' => 'image',
+            'label' => 'Image',
+            'upload' => true,
+            'height' =>'80px',
+            'width' =>'80px',
+        ];
+
+        $V2 = [
+            'name' => 'nom',
+            'type' => 'text',
+            'label' => 'Nom',
+        ];
+        $V3= [
+            'name' => 'category.nomCat',
+            'type' => 'text',
+            'label' => 'Categorie',
+        ];
+        $V4= [
+            'name' => 'prix',
+            'type' => 'text',
+            'label' => 'Prix',
+        ];
+
+        $V5= [
+            'name' => 'remise',
+            'type' => 'text',
+            'label' => 'Remise(%)',
+        ];
+
+        $V6= [
+            'name' => 'datDebut',
+            'type' => 'date',
+            'label' => 'Date debut',
+        ];
+
+        $V7= [
+            'name' => 'datFin',
+            'type' => 'date',
+            'label' => 'Date Fin',
+        ]; 
+        $this->crud->addColumns([$V2,$V1,$V3,$V4,$V5,$V6,$V7]);
+
+
+    }
+
 }
