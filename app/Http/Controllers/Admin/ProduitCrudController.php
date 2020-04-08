@@ -89,7 +89,10 @@ class ProduitCrudController extends CrudController
         $this->crud->addField([
                     'name' => 'categorries',
                     'label' => 'Image',
-                    'type' => 'browse',]);
+                    'type' => 'browse',
+                    
+                    
+                    ]);
 
 
 

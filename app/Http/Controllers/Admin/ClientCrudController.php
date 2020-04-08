@@ -78,6 +78,7 @@ class ClientCrudController extends CrudController
             'label' => "Profile Image : ",
             'name' => "image",
             'type' => 'image',
+            'default'=>'uploads/images_clients/default.jpg',
             'upload' => true,
             'crop' => true, // set to true to allow cropping, false to disable
             'aspect_ratio' => 1, // ommit or set to 0 to allow any aspect ratio
