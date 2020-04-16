@@ -90,8 +90,6 @@ class ProduitCrudController extends CrudController
                     'name' => 'categorries',
                     'label' => 'Image',
                     'type' => 'browse',
-                    
-                    
                     ]);
 
 
