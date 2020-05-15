@@ -19,9 +19,19 @@ class Client extends Model
     // protected $hidden = [];
     // protected $dates = [];
 
-   
-  
+    public function commandes(){
 
+        return $this->hasMany(Commande::class);
+
+        }
+    
+
+   
+    public function comments(){
+        return $this->hasMany(Comment::class);
+
+    }
+  
  
     public function setImageAttribute($value)
     {

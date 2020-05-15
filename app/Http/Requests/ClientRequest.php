@@ -23,7 +23,7 @@ class ClientRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules() 
     {
         return [
              'nom' => 'required|min:3|max:15',

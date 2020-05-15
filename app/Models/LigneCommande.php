@@ -5,7 +5,7 @@ namespace App\Models;
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
 
-class Produit extends Model
+class LigneCommande extends Model
 {
     use CrudTrait;
 
@@ -14,8 +14,8 @@ class Produit extends Model
     | GLOBAL VARIABLES
     |--------------------------------------------------------------------------
     */
-  
-    protected $table = 'produits';
+
+    protected $table = 'ligne_commandes';
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     protected $guarded = ['id'];
@@ -29,21 +29,15 @@ class Produit extends Model
     |--------------------------------------------------------------------------
     */
 
-    public function category(){
-
-        return $this->belongsTo(Catproduit::class); 
-
-        }
+    public function commande(){
+        return $this->belongsTo(Commande::class);
         
- 
-    public function comments(){
-      return $this->hasMany(Comment::class);
-            }
-    public function lignecommandes(){
-        return $this->hasMany(LigneCommande::class);
-            
-        }
-    
+    }
+
+    public function produit(){
+        return $this->belongsTo(Produit::class);
+        
+    }
 
     /*
     |--------------------------------------------------------------------------

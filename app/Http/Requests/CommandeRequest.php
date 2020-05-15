@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use App\Http\Requests\Request;
 use Illuminate\Foundation\Http\FormRequest;
 
-class FormuleRequest extends FormRequest
+class CommandeRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,8 +26,7 @@ class FormuleRequest extends FormRequest
     public function rules()
     {
         return [
-            'nomFormule' => 'required|unique:formules',
-            'description'=> 'min:4|max:80',
+            // 'name' => 'required|min:5|max:255'
         ];
     }
 
@@ -51,12 +50,7 @@ class FormuleRequest extends FormRequest
     public function messages()
     {
         return [
-            'nomFormule.required'=> 'Le nom de la formule est obligatoire !',
-            'nomFormule.unique'=> 'Cette formule existe déja !',
-            'description.min'=> 'la description doit contenir au minimum 4 caracteres',
-            'description.max'=> 'la description doit contenir au maximum 80 caracteres',
-
-
+            //
         ];
     }
 }
