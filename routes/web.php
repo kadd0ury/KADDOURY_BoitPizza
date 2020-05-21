@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Gloudemans\Shoppingcart\Facades\Cart;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +17,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('/index', 'ShowController@index')->name('index');
+Route::get('/details/{id}', 'ShowController@show')->name('products.show');
+//Route ::group(['middleware' => ['auth']],function(){});
+Route::post('/panier/ajouter', 'CartController@store')->name('cart.store');
+Route::get('/panier','CartController@index')->name('cart.index');
+Route::delete('/panier/{rowId}','CartController@destroy')->name('cart.destroy');
+Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');

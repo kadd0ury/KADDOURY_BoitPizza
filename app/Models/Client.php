@@ -1,13 +1,13 @@
 <?php
 
 namespace App\Models;
-
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
-class Client extends Model
+class Client extends Authenticatable
 {
     use CrudTrait;
     
@@ -15,12 +15,21 @@ class Client extends Model
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     protected $guarded = ['id'];
-    // protected $fillable = [];
+    protected $fillable = [
+        'nom','prenom','email', 'login','motdepasse','adresse','image'
+    ];
     // protected $hidden = [];
     // protected $dates = [];
+    protected $hidden = [
+        'motdepasse', 'remember_token',
+    ];
+
+    public function getAuthPassword()
+   {
+     return $this->motdepasse;
+   }
 
     public function commandes(){
-
         return $this->hasMany(Commande::class);
 
         }
