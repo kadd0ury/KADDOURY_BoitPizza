@@ -16,3 +16,4 @@
         <link href="{{ URL::asset('assets/common/styles.css')}}" rel="stylesheet">
         <link href="{{ URL::asset('assets/common/show.css')}}" rel="stylesheet">
         <link href="{{ URL::asset('assets/common/panier.css')}}" rel="stylesheet">
+

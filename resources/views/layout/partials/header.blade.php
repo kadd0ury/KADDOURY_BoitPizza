@@ -4,7 +4,6 @@
                 <a class="logo" href="{{route('index')}}"><img src="{{ URL::asset('assets/images/logo-white.png') }}" alt="Logo"></a>
 
                 <div class="right-area">
-                <h6><a class="plr-20 color-white btn-fill-primary" href="#">ORDER: +34 685 778 8892</a></h6>
                 </div><!-- right-area -->
                 
                 <a class="menu-nav-icon" data-menu="#main-menu" href="#"><i class="ion-navicon"></i></a>
@@ -16,8 +15,9 @@
                         <li><a href="05_contact.html">CONTACT</a></li>
                         <li><a href="{{route('cart.index')}}">Panier
                         <span class="badge badge-pill badge-warning">{{Cart::count()}}</span></a></li>
+                        <li><a href="05_contact.html">@include('layout.partials.auth')</a></li>
                 </ul>
-
+           
               
 
                 <div class="clearfix"></div>

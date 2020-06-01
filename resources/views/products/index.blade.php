@@ -172,22 +172,38 @@
 
                 <div class="row">
 
-                        @foreach($pizza as $item)        
+                        @foreach($pizza as $item) 
+                        @if($item->remise ==0)    
                         <div class="col-md-6 food-menu pizza">
                                 <div class="sided-90x mb-30 ">
                                         <div class="s-left"><img class="br-3" src="{{$item->categorries}}" alt="Menu Image"></div><!--s-left-->
                                         <div class="s-right">
                                                 <h5 class="mb-10"><a href="{{ route('products.show',$item->id) }}"><b>{{$item->nom}}</a></b><b class="color-primary float-right">${{$item->prix}}</b></h5>
-                                                <p class="pr-70">Maecenas fermentum tortor id fringilla molestie. In hac habitasse platea dictumst. </p>
+                                                <p class="pr-70">Maecenas fermentum tortor id fringilla molestie. In hac habitasse platea dictumst.</p>
                         
                                  
                                         </div><!--s-right-->
                                 </div><!-- sided-90x -->
                         </div><!-- food-menu -->
+                        @else 
+                        <div class="col-md-6 food-menu pizza">
+                                <div class="sided-90x mb-30 ">
+                                        <div class="s-left"><img class="br-3" src="{{$item->categorries}}" alt="Menu Image"></div><!--s-left-->
+                                        <div class="s-right">
+                                                <h5 class="mb-10"><a href="{{ route('products.show',$item->id) }}"><b>{{$item->nom}}</a></b><b class="color-primary float-right">${{$item->prix}}</b></h5>
+                                                <b style="color:#1f8330;float:right">-{{$item->remise}}%</b>
+                                                <p class="pr-70">Maecenas fermentum tortor id fringilla molestie. In hac habitasse platea dictumst.</p>
+                        
+                                 
+                                        </div><!--s-right-->
+                                </div><!-- sided-90x -->
+                        </div><!-- food-menu -->
+                        @endif
                         @endforeach
 
                      
                         @foreach($boisson as $item)
+                        @if($item->remise ==0) 
                         <div class="col-md-6 food-menu pasta">
                        
                                 <div class="sided-90x mb-30 ">
@@ -198,10 +214,24 @@
                                         </div><!--s-right-->
                                 </div><!-- sided-90x -->
                         </div><!-- food-menu -->
+                        @else
+                        <div class="col-md-6 food-menu pasta">
+                       <div class="sided-90x mb-30 ">
+                               <div class="s-left"><img class="br-3" src="{{$item->categorries}}" alt="Menu Image"></div><!--s-left-->
+                               <div class="s-right">
+                                       <h5 class="mb-10"><b><a href="{{ route('products.show',$item->id) }}">{{$item->nom}}</a></b><b class="color-primary float-right">${{$item->prix}}</b></h5>
+                                       <b style="color:#1f8330;float:right">-{{$item->remise}}%</b>
+                                       <p class="pr-70">Maecenas fermentum tortor id fringilla molestie. In hac habitasse platea dictumst. </p>
+                               </div><!--s-right-->
+                       </div><!-- sided-90x -->
+               </div><!-- food-menu -->
+
+                        @endif
                         @endforeach
 
 
                         @foreach($salades as $item)
+                        @if ($item->remise ==0)
                         <div class="col-md-6 food-menu salads">
                                 <div class="sided-90x mb-30">
                                         <div class="s-left"><img class="br-3" src="{{$item->categorries}}" alt="Menu Image"></div><!--s-left-->
@@ -211,9 +241,22 @@
                                         </div><!--s-right-->
                                 </div><!-- sided-90x -->
                         </div><!-- food-menu -->
+                        @else
+                        <div class="col-md-6 food-menu salads">
+                                <div class="sided-90x mb-30">
+                                        <div class="s-left"><img class="br-3" src="{{$item->categorries}}" alt="Menu Image"></div><!--s-left-->
+                                        <div class="s-right">
+                                                <h5 class="mb-10"><b><a href="{{ route('products.show',$item->id) }}">{{$item->nom}}</a></b><b class="color-primary float-right">${{$item->prix}}</b></h5>
+                                                <b style="color:#1f8330;float:right">-{{$item->remise}}%</b>
+                                                <p class="pr-70">Proin dictum viverra varius. Etiam vulputate libero dui, at pretium elit elementum quis. </p>
+                                        </div><!--s-right-->
+                                </div><!-- sided-90x -->
+                        </div><!-- food-menu -->
+                        @endif
                         @endforeach
 
                         @foreach($desserts as $item)
+                        @if ($item->remise ==0)
                         <div class="col-md-6 food-menu deserts">
                                 <div class="sided-90x mb-30">
                                         <div class="s-left"><img class="br-3" src="{{$item->categorries}}" alt="Menu Image"></div><!--s-left-->
@@ -223,6 +266,18 @@
                                         </div><!--s-right-->
                                 </div><!-- sided-90x -->
                         </div><!-- food-menu -->
+                        @else
+                        <div class="col-md-6 food-menu deserts">
+                                <div class="sided-90x mb-30">
+                                        <div class="s-left"><img class="br-3" src="{{$item->categorries}}" alt="Menu Image"></div><!--s-left-->
+                                        <div class="s-right">
+                                                <h5 class="mb-10"><b><a href="{{ route('products.show',$item->id) }}">{{$item->nom}}</a></b><b class="color-primary float-right">${{$item->prix}}</b></h5>
+                                                <b style="color:#1f8330;float:right">-{{$item->remise}}%</b>
+                                                <p class="pr-70">Maecenas fermentum tortor id fringilla molestie. In hac habitasse platea dictumst. </p>
+                                        </div><!--s-right-->
+                                </div><!-- sided-90x -->
+                        </div><!-- food-menu -->
+                        @endif
                         @endforeach
 
                 </div><!-- row -->

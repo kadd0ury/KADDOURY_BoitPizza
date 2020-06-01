@@ -19,7 +19,8 @@ class Commande extends Model
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     protected $guarded = ['id'];
-    // protected $fillable = [];
+     protected $fillable = ['dateCom','dateExp','adresseliv','type','ville',
+     'secteur','client_id','telephone',];
     // protected $hidden = [];
     // protected $dates = [];
 
@@ -33,8 +34,8 @@ class Commande extends Model
         return $this->belongsTo(Client::class); 
         }
 
-    public function lignecommandes(){
-        return $this->hasMany(LigneCommande::class);
+    public function produits(){
+        return $this->belongsToMany(Produit::class)->withPivot('prix','nb');
     
         }
 

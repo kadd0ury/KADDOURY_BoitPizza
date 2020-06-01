@@ -19,7 +19,7 @@ class LigneCommande extends Model
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     protected $guarded = ['id'];
-    // protected $fillable = [];
+    protected $fillable = ['commande_id','produit_id','prix','nb',];
     // protected $hidden = [];
     // protected $dates = [];
 

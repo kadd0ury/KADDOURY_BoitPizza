@@ -90,9 +90,9 @@ class CommandeCrudController extends CrudController
         ];
 
         $V4=[
-            'label'=>"Réalisé",
+            'label'=>"Ville",
             'type'=>'number',
-            'name'=>'realise',
+            'name'=>'ville',
         ];
 
         $V5=[

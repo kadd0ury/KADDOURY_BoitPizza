@@ -27,3 +27,6 @@ Route::get('/panier','CartController@index')->name('cart.index');
 Route::delete('/panier/{rowId}','CartController@destroy')->name('cart.destroy');
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/paiement', 'CheckoutController@index')->name('checkout.index');
+Route::post('/paiement', 'CheckoutController@store')->name('checkout.store');
+//Route::get('/merci','CheckoutController@merci')->name('checkout.merci');
