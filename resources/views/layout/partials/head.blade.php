@@ -2,7 +2,9 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta charset="UTF-8">
-        
+
+        <script src="{{ URL::asset('js/app.js')}}"></script>
+  
 
         <!-- Font -->
         <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -16,4 +18,8 @@
         <link href="{{ URL::asset('assets/common/styles.css')}}" rel="stylesheet">
         <link href="{{ URL::asset('assets/common/show.css')}}" rel="stylesheet">
         <link href="{{ URL::asset('assets/common/panier.css')}}" rel="stylesheet">
+         <!-- comments ressoucres -->
+        <link href="{{ URL::asset('assets/comments/css.css')}}" rel="stylesheet">
+        
+      
 

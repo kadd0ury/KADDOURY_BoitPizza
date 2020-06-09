@@ -3,11 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Produit;
-use Gloudemans\Shoppingcart\Facades\Cart;
-use Illuminate\Support\Facades\Session;
 
-class CartController extends Controller
+
+class Comment extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +14,7 @@ class CartController extends Controller
      */
     public function index()
     {
-        return view('cart.index');
+        //
     }
 
     /**
@@ -35,19 +33,21 @@ class CartController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {    
-        $duplicata = Cart::search(function ($cartItem, $rowId) use ($request){
-            return $cartItem->id == $request->product_id;
-        });
+    public function store(Request $request, $id)
+    {
 
-        if ($duplicata->isNotEmpty()){
-            return redirect()->route('index')->with('success','le produit a déja été ajouté'); 
-        }
-        $produit=Produit::find($request->product_id);
-        Cart::add($produit->id,$produit->nom,1,$produit->prix)
-        ->associate('App\Models\Produit');
-        return redirect()->route('index')->with('success','le produit a bien été ajouté');
+        
+        
+        $comments = \App\Models\Comment::create([
+            'produit_id' => $id,
+            'client_id' => auth()->user()->id,
+            'texte' => $request->texte
+        ]);
+
+
+
+
+        return redirect('/details/' . $id);
     }
 
     /**
@@ -79,13 +79,9 @@ class CartController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $rowId)
+    public function update(Request $request, $id)
     {
-        $data=$request->json()->all();
-   
-        Cart::update($rowId,$data['qty']);
-        Session::flash('success','la quantité du panier  a été mise à jour');
-        return response()->json(['success'=>'la Quantité du produit a été bien modifié']);
+        //
     }
 
     /**
@@ -94,12 +90,8 @@ class CartController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($rowId)
+    public function destroy($id)
     {
-        Cart::remove($rowId);
-        return back()->with('success','le produit a été supprimé');
+        //
     }
-
-
-  
 }

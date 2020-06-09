@@ -36,8 +36,8 @@ class Client extends Authenticatable
     
 
    
-    public function comments(){
-        return $this->hasMany(Comment::class);
+    public function produits(){
+        return $this->belongsToMany(Comment::class,'comments');
 
     }
   

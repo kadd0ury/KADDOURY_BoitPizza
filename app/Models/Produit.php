@@ -36,11 +36,12 @@ class Produit extends Model
         }
         
  
-    public function comments(){
-      return $this->hasMany(Comment::class);
+    public function clients(){
+      return $this->belongsToMany(Comment::class,'comments');
             }
-    public function lignecommandes(){
-        return $this->hasMany(LigneCommande::class);
+            
+    public function commandes(){
+        return $this->belongsToMany(Commande::class,'ligne_commandes');
             
         }
     

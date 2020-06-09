@@ -10,12 +10,12 @@
 
                 <div class="pt-30">
                         <p class="underline-secondary mb-10"><b>Phone:</b></p>
-                        <a href="tel:+53 345 7953 32453 ">+53 345 7953 32453 </a>
+                        <a href="tel:+53 345 7953 32453 ">0523505418,0670719896</a>
                 </div>
 
                 <div class="pt-30">
                         <p class="underline-secondary mb-10"><b>Email:</b></p>
-                        <a href="mailto:yourmail@gmail.com"> yourmail@gmail.com</a>
+                        <a href="mailto:yourmail@gmail.com"> Luigis@gmail.com</a>
                 </div>
 
                 <ul class="icon mt-30">

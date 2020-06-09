@@ -9,13 +9,13 @@
                 <a class="menu-nav-icon" data-menu="#main-menu" href="#"><i class="ion-navicon"></i></a>
                 <ul class="main-menu font-mountainsre" id="main-menu">
                         <li><a href="{{route('index')}}">Home</a></li>
-                        <li><a href="02_about_us.html">Menu</a></li>
-                        <li><a href="03_menu.html">SERVICES</a></li>
-                        <li><a href="04_blog.html">NEWS</a></li>
-                        <li><a href="05_contact.html">CONTACT</a></li>
+                        <li><a href="#">Menu</a></li>
+                        <li><a href="#">SERVICES</a></li>
+                        <li><a href="#">NEWS</a></li>
+                        <li><a href="#">CONTACT</a></li>
                         <li><a href="{{route('cart.index')}}">Panier
                         <span class="badge badge-pill badge-warning">{{Cart::count()}}</span></a></li>
-                        <li><a href="05_contact.html">@include('layout.partials.auth')</a></li>
+                        <li><a href="#">@include('layout.partials.auth')</a></li>
                 </ul>
            
               

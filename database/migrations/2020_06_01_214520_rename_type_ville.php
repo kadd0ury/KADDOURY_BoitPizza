@@ -4,20 +4,18 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class RenameDefaultPubDate extends Migration
+class RenameTypeVille extends Migration
 {
     /**
      * Run the migrations.
-     * 
-     * 
-     * //default(\DB::raw('CURRENT_TIMESTAMP'))
      *
      * @return void
      */
     public function up()
     {
-        Schema::table('comments', function (Blueprint $table) {
-            $table->dateTime('date_pub')->default('CURRENT_TIMESTAMP')->change(); 
+        Schema::table('commandes', function (Blueprint $table) {
+            $table->string('ville')->change();
+
             //
         });
     }
@@ -29,7 +27,7 @@ class RenameDefaultPubDate extends Migration
      */
     public function down()
     {
-        Schema::table('comments', function (Blueprint $table) {
+        Schema::table('commandes', function (Blueprint $table) {
             //
         });
     }

@@ -35,7 +35,7 @@ class Commande extends Model
         }
 
     public function produits(){
-        return $this->belongsToMany(Produit::class)->withPivot('prix','nb');
+        return $this->belongsToMany(Produit::class,'ligne_commandes');
     
         }
 

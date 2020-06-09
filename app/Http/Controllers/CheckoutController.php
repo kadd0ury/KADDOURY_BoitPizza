@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use Illuminate\Support\Facades\DB;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Stripe\PaymentIntent;
 use App\Models\Commande;
@@ -18,21 +20,20 @@ class CheckoutController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   
-        if (Cart::count()== 0){
+    {
+        if (Cart::count() == 0) {
             return redirect()->route('index');
         }
-        
+
         Stripe::setApiKey('sk_test_03VrhZwKvxOTlovj34UP62Df000UaYrwVx');
         $intent = PaymentIntent::create([
-            'amount' => round (Cart::total()),
-            'currency' => 'usd', 
-          ]);
-          $clientsecret = Arr::get($intent,'client_secret');
-        return view ('checkout.index' ,[
-      'clientsecret' =>$clientsecret
-        ]
-        );
+            'amount' => round(Cart::total()),
+            'currency' => 'usd',
+        ]);
+        $clientsecret = Arr::get($intent, 'client_secret');
+        return view('checkout.index', [
+            'clientsecret' => $clientsecret
+        ]);
     }
 
     /**
@@ -53,63 +54,48 @@ class CheckoutController extends Controller
      */
     public function store(Request $request)
     {
-        
-       
-  
-        
-        $commande =Commande::create([
-        'client_id'=>31,
-        'adresseliv'=>$request->adresseliv,
-        'type'=>$request->type,
-        'ville'=>$request->ville,
-        'secteur'=>$request->secteur,
-        'telephone'=>$request->telephone,
-         ]);
-
-         
-
-        
-        foreach(Cart::content() as $item ){
-        $commandeligne=LigneCommande::create([
-        'commande_id'=> $commande->id,
-        'produit_id' => $item->model->id,
-        'nb'         => $item->qty ,
-       ]);     
-        }
-
-        
-        //return  $data ['paymentIntent'];
-        //$commande = new Commande();
-        //$commande->adresseliv=$data['paymentIntent']['id'];
-        //$commande->realise=$data['paymentIntent']['amount'];
-        //$commande->client_id=31;
-        //$commande->save();
         $data = $request->json()->all();
-        if ($data['paymentIntent']['status']=='succeeded'){
-            dd($commande);
+
+        if ($data['paymentIntent']['status'] == 'succeeded') {
+
+            $commande = new Commande();
+            $commande->client_id = auth()->user()->id;
+            $commande->adresseliv = $data['adresseliv'];
+            $commande->type = $data['type'];
+            $commande->ville = $data['ville'];
+            $commande->secteur = $data['secteur'];
+            $commande->telephone = $data['telephone'];
+            $commande->save();
+
+
+            foreach (Cart::content() as $item) {
+
+                $prixproduct = DB::table('produits')->where('id', $item->model->id)->value('prix');
+                $commandeligne = LigneCommande::create([
+                    'commande_id' => $commande->id,
+                    'produit_id' => $item->model->id,
+                    'nb'         => $item->qty,
+                    'prix' => $prixproduct * $item->qty,
+                ]);
+            }
+
             Cart::destroy();
-            Session::flash('success','');
+            Session::flash('success', '');
 
-            return response()->json(['success'=>'Payment Intent succeeded']);
+            return response()->json(['success' => 'Payment Intent succeeded']);
+        } else {
+            dd($data);
+
+            return response()->json(['error' => 'Payment Intent not succeeded']);
         }
-        else {
-        
-            return response()->json(['error'=>'Payment Intent not succeeded']);
-
-        } 
-        
-
-       
-
-        
     }
 
-   // public function merci()
-    //{
-    //    return Session::has('success')?view('checkout.merci'):
+    public function merci()
+    {
+        return Session::has('success') ? view('checkout.merci') :
 
-    //    redirect()->route('index');
-    //}
+            redirect()->route('index');
+    }
 
     /**
      * Display the specified resource.

@@ -28,85 +28,84 @@ class CommandeCrudController extends CrudController
 
     protected function setupListOperation()
     {
-
-        $V1=[
-            'label'=>"Client",
-            'type'=>'text',
-            'name'=>'client.nom',
+        $V1 = [
+            'label' => "Client",
+            'type' => 'text',
+            'name' => 'client.nom',
         ];
-        $V2=[
-            'label'=>"Date de livraison",
-            'type'=>'datetime',
-            'name'=>'dateExp',
+        $V2 = [
+            'label' => "Date de la commande ",
+            'type' => 'datetime',
+            'name' => 'dateCom',
         ];
-
-
-
-    
-
-        $V3=[
-            'label'=>"Secteur",
-            'type'=>'text',
-            'name'=>'secteur',
-        ];
-        $V4=[
-            'label'=>"adresse de livraison",
-            'type'=>'textarea',
-            'name'=>'adresseliv',
+        $V3 = [
+            'label' => "adresse de livraison",
+            'type' => 'textarea',
+            'name' => 'adresseliv',
         ];
 
-        $this->crud->addColumns([$V1,$V2,$V3,$V4]);
-        
-     
+        $V4 = [
+            'label' => "Secteur",
+            'type' => 'text',
+            'name' => 'secteur',
+        ];
+        $V5 = [
+            'label' => "Ville",
+            'type' => 'text',
+            'name' => 'ville',
+        ];
+        $V6 = [
+            'label' => "telephone",
+            'type' => 'text',
+            'name' => 'telephone',
+        ];
 
 
-
-        
+        $this->crud->addColumns([$V1, $V2, $V3, $V4,$V5,$V6]);
     }
 
     protected function setupCreateOperation()
     {
         $this->crud->setValidation(CommandeRequest::class);
 
-        $V1=[
-            'label'=>"Client",
-            'type'=>'select',
-            'name'=>'client_id',
-            'entity'=>'client',
-            'attribute'=>'nom',
-            'model'=>\App\Models\Client::class,
+        $V1 = [
+            'label' => "Client",
+            'type' => 'select',
+            'name' => 'client_id',
+            'entity' => 'client',
+            'attribute' => 'nom',
+            'model' => \App\Models\Client::class,
         ];
 
-        $V2=[
-            'label'=>"Date de livraison",
-            'type'=>'datetime',
-            'name'=>'dateExp',
+        $V2 = [
+            'label' => "Date de livraison",
+            'type' => 'datetime',
+            'name' => 'dateExp',
         ];
 
-        $V3=[
-            'label'=>"Type",
-            'type'=>'text',
-            'name'=>'type',
+        $V3 = [
+            'label' => "Type",
+            'type' => 'text',
+            'name' => 'type',
         ];
 
-        $V4=[
-            'label'=>"Ville",
-            'type'=>'number',
-            'name'=>'ville',
+        $V4 = [
+            'label' => "Ville",
+            'type' => 'number',
+            'name' => 'ville',
         ];
 
-        $V5=[
-            'label'=>"Secteur",
-            'type'=>'text',
-            'name'=>'secteur',
+        $V5 = [
+            'label' => "Secteur",
+            'type' => 'text',
+            'name' => 'secteur',
         ];
-        $V6=[
-            'label'=>"adresse de livraison",
-            'type'=>'textarea',
-            'name'=>'adresseliv',
+        $V6 = [
+            'label' => "Adresse de livraison",
+            'type' => 'textarea',
+            'name' => 'adresseliv',
         ];
-        $this->crud->addFields([$V1,$V2,$V3,$V4,$V5,$V6]);
-
+        $this->crud->addFields([$V1, $V2, $V3, $V4, $V5, $V6]);
     }
 
     protected function setupUpdateOperation()
@@ -115,53 +114,50 @@ class CommandeCrudController extends CrudController
     }
 
 
-    protected function setupShowOperation() {
+    protected function setupShowOperation()
+    {
         $this->crud->set('show.setFromDb', false);
 
-        $V1=[
-            'label'=>"Client",
-            'type'=>'text',
-            'name'=>'client.nom',
+        $V1 = [
+            'label' => "Client",
+            'type' => 'text',
+            'name' => 'client.nom',
         ];
-        $V2=[
-            'label'=>"Date de livraison",
-            'type'=>'datetime',
-            'name'=>'dateExp',
-        ];
-
-        $V3=[
-            'label'=>"Date de commande",
-            'type'=>'datetime',
-            'name'=>'dateCom',
+        $V2 = [
+            'label' => "Date de livraison",
+            'type' => 'datetime',
+            'name' => 'dateExp',
         ];
 
-        $V4=[
-            'label'=>"Type",
-            'type'=>'text',
-            'name'=>'type',
+        $V3 = [
+            'label' => "Date de commande",
+            'type' => 'datetime',
+            'name' => 'dateCom',
         ];
 
-        $V5=[
-            'label'=>"Réalisé",
-            'type'=>'number',
-            'name'=>'realise',
+        $V4 = [
+            'label' => "Type",
+            'type' => 'text',
+            'name' => 'type',
         ];
 
-        $V6=[
-            'label'=>"Secteur",
-            'type'=>'text',
-            'name'=>'secteur',
+        $V5 = [
+            'label' => "Ville",
+            'type' => 'number',
+            'name' => 'ville',
         ];
-        $V7=[
-            'label'=>"adresse de livraison",
-            'type'=>'textarea',
-            'name'=>'adresseliv',
+
+        $V6 = [
+            'label' => "Secteur",
+            'type' => 'text',
+            'name' => 'secteur',
         ];
- 
-        $this->crud->addColumns([$V1,$V2,$V3,$V4,$V5,$V6,$V7]);
+        $V7 = [
+            'label' => "adresse de livraison",
+            'type' => 'textarea',
+            'name' => 'adresseliv',
+        ];
 
-
-
+        $this->crud->addColumns([$V1, $V2, $V3, $V4, $V5, $V6, $V7]);
     }
-
 }
