@@ -14,7 +14,6 @@ class CreateTableLignecommandes extends Migration
     public function up()
     {
         Schema::create('ligne_commandes', function (Blueprint $table) {
-
             $table->id();
             $table->bigInteger('commande_id')->unsigned();
             $table->integer('produit_id')->unsigned();

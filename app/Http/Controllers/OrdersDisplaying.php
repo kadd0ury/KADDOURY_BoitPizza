@@ -149,4 +149,34 @@ class OrdersDisplaying extends Controller
         }
         return $totalprice + $totalprice * 0.1;
     }
+
+    public function GeneratePdf($id)
+
+    {
+        $total_remise = 0;
+        $sous_total = 0;
+
+
+        $commandes = Commande::find($id);
+
+
+        $commanLigne = LigneCommande::where('commande_id', $id)->get();
+        $total_qte = DB::table('ligne_commandes')
+            ->where('commande_id', $id)
+            ->sum('nb');
+
+        foreach ($commanLigne as $item) {
+            $total_remise = $total_remise + (DB::table('produits')->where('id', $item->produit_id)->value('remise'));
+            $sous_total = $sous_total + ($item->nb * $item->prix);
+        }
+
+
+        return view('generatePDF.pdf', [
+
+            'commandes'    => $commandes,
+            'total_qte'    => $total_qte,
+            'total_remise' => $total_remise,
+            'sous_total'   => $sous_total
+        ]);
+    }
 }

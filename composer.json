@@ -10,6 +10,7 @@
     "require": {
         "php": "^7.2.5",
         "backpack/crud": "4.0.*",
+        "barryvdh/laravel-dompdf": "^0.8.6",
         "barryvdh/laravel-elfinder": "^0.4.5",
         "cartalyst/stripe": "~2.0",
         "fideloper/proxy": "^4.2",

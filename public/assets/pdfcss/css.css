@@ -1,0 +1,51 @@
+.container{
+	padding: 28px;
+    padding-left: 0px;
+}
+
+img {
+width: 23%;
+
+}
+
+.title{
+
+	position: relative;
+    left: 15px;
+    font-family: fantasy;
+    color: red;
+    font-size: 20px;
+}
+
+.txt{
+
+	font-weight: 500;
+    font-size: larger;
+}
+.sub-title {
+
+	font-size: smaller;
+}
+
+div.col-md-5{
+
+	border-style: inset;
+}
+
+
+div.offset-md-2{
+
+	border-style: inset;
+}
+
+div.row.tech{
+
+	background-color: darkgray;
+	color: #1d2124;
+	border-style: ridge;
+
+}
+
+
+
+

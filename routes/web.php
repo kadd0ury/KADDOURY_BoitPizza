@@ -36,3 +36,6 @@ Route::get('/myorders','OrdersDisplaying@index')->name('checkout.orders');
 //managing comments
 Route::post('/comments/{id}','Comment@store')->name('comments');
 
+//managing generating pdf
+Route::post('/boncommande/{id}','OrdersDisplaying@GeneratePdf')->name('generatepdf');
+

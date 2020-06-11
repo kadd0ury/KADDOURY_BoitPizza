@@ -55,9 +55,7 @@ class CheckoutController extends Controller
     public function store(Request $request)
     {
         $data = $request->json()->all();
-
         if ($data['paymentIntent']['status'] == 'succeeded') {
-
             $commande = new Commande();
             $commande->client_id = auth()->user()->id;
             $commande->adresseliv = $data['adresseliv'];
@@ -66,10 +64,7 @@ class CheckoutController extends Controller
             $commande->secteur = $data['secteur'];
             $commande->telephone = $data['telephone'];
             $commande->save();
-
-
             foreach (Cart::content() as $item) {
-
                 $prixproduct = DB::table('produits')->where('id', $item->model->id)->value('prix');
                 $commandeligne = LigneCommande::create([
                     'commande_id' => $commande->id,
@@ -78,7 +73,6 @@ class CheckoutController extends Controller
                     'prix' => $prixproduct * $item->qty,
                 ]);
             }
-
             Cart::destroy();
             Session::flash('success', '');
 

@@ -81,11 +81,14 @@
                         <button class="btn btn-dark" style="float: left;" type="button" data-toggle="collapse" data-target="#collapse1" aria-expanded="true" aria-controls="collapseOne">
                             Commande : <span class="badge badge-light">{{\App\Http\Controllers\OrdersDisplaying::totalprix($item->id)}}€</span>
                         </button>
+                        <form action="{{route('generatepdf',$item->id)}}" method="Post">
+                         @csrf
                         <div style="float: right;padding: 10px">
                             <i class="fa fa-clock-o" aria-hidden="true"></i>  {{$item->dateCom}}
                             <button type="submit" style="height: 30px;width: 39px;" class="btn btn-dark"><i class="fa fa-download" aria-hidden="true"></i></button>
                         
                         </div>
+                        </form> 
                     </h6>
                 </div>
 

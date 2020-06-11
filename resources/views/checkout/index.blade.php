@@ -139,7 +139,6 @@
             var telephone = document.getElementById('telephone').value;
             var adresseliv = document.getElementById('adresseliv').value;
             redirect = '/merci';
-
             fetch(
               url, {
                 headers: {
@@ -148,7 +147,6 @@
                   "X-Requested-With": "XMLHttpRequest",
                   "X-CSRF-TOKEN": token
                 },
-
                 method: 'post',
                 body: JSON.stringify({
                   paymentIntent: paymentIntent,
